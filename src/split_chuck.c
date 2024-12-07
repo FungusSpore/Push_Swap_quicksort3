@@ -6,25 +6,26 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:28:31 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 01:40:08 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:04:02 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 static void	handle_top_a(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 {
 	int	pivot;
 
-	pivot = setting_pivot(a, b, TOP_A, size);
+	pivot = size;
 	while (size--)
 	{
-		if (((t_data *)(*a)->content)->index > pivot/3 * 2)
+		if (((t_data *)(*a)->content)->index >= pivot/3 * 2)
 		{
 			ra(a);
 			new_chucks->big.size++;
 		}
-		else if (((t_data *)(*a)->content)->index < pivot/3 * 2)
+		else if (((t_data *)(*a)->content)->index <= pivot/3)
 		{
 			pb(a, b);
 			rb(b);
@@ -42,26 +43,29 @@ static void	handle_bottom_a(t_list **a, t_list **b, t_chucks *new_chucks, int si
 {
 	int	pivot;
 
-	pivot = setting_pivot(a, b, BOTTOM_A, size);
+	pivot = size;
 	while (size--)
 	{
-		if (((t_data *)(*a)->content)->index > pivot/3 * 2)
+		if (((t_data *)(*a)->content)->index >= pivot/3 * 2)
 		{
 			rra(a);
 			new_chucks->big.size++;
+			new_chucks->big.loc = TOP_A;
 		}
-		else if (((t_data *)(*a)->content)->index < pivot/3 * 2)
+		else if (((t_data *)(*a)->content)->index < pivot/3)
 		{
 			rra(a);
 			pb(a, b);
 			rb(b);
 			new_chucks->min.size++;
+			new_chucks->min.loc = BOTTOM_B;
 		}
 		else
 		{
 			rra(a);
 			pb(a, b);
 			new_chucks->mid.size++;
+			new_chucks->mid.loc = TOP_B;
 		}
 	}
 }
@@ -73,21 +77,24 @@ static void	handle_top_b(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 	pivot = setting_pivot(a, b, TOP_B, size);
 	while (size--)
 	{
-		if (((t_data *)(*a)->content)->index > pivot/3 * 2)
+		if (((t_data *)(*a)->content)->index >= pivot/3 * 2)
 		{
 			pa(a, b);
 			new_chucks->big.size++;
+			new_chucks->big.loc = TOP_A;
 		}
-		else if (((t_data *)(*a)->content)->index < pivot/3 * 2)
+		else if (((t_data *)(*a)->content)->index < pivot/3)
 		{
 			rb(b);
 			new_chucks->min.size++;
+			new_chucks->min.loc = BOTTOM_B;
 		}
 		else
 		{
 			pa(a, b);
 			ra(a);
 			new_chucks->mid.size++;
+			new_chucks->mid.loc = BOTTOM_A;
 		}
 	}
 }
@@ -99,23 +106,26 @@ static void	handle_bottom_b(t_list **a, t_list **b, t_chucks *new_chucks, int si
 	pivot = setting_pivot(a, b, BOTTOM_B, size);
 	while (size--)
 	{
-		if (((t_data *)(*a)->content)->index > pivot/3 * 2)
+		if (((t_data *)(*a)->content)->index >= pivot/3 * 2)
 		{
 			rrb(b);
 			pa(a, b);
 			new_chucks->big.size++;
+			new_chucks->big.loc = TOP_A;
 		}
-		else if (((t_data *)(*a)->content)->index < pivot/3 * 2)
+		else if (((t_data *)(*a)->content)->index < pivot/3)
 		{
 			rrb(b);
 			pa(a, b);
 			ra(a);
 			new_chucks->min.size++;
+			new_chucks->big.loc = BOTTOM_A;
 		}
 		else
 		{
 			rb(b);
 			new_chucks->mid.size++;
+			new_chucks->big.loc = TOP_B;
 		}
 	}
 }

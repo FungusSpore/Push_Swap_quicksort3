@@ -6,11 +6,12 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 01:19:48 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 01:36:43 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/07 12:26:50 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 static int	from_the_bottom(t_list *lst, int size)
 {
@@ -19,6 +20,7 @@ static int	from_the_bottom(t_list *lst, int size)
 
 	if (!lst)
 		return (0);
+	pivot_value = 0;
 	to_adjust = ft_lstsize(lst) - size;
 	while (to_adjust--)
 		lst = lst->next;
@@ -36,6 +38,7 @@ static int	from_the_top(t_list *lst, int size)
 
 	if (!lst)
 		return (0);
+	pivot_value = 0;
 	while (size--)
 	{
 		pivot_value += ((t_data *)lst->content)->index;

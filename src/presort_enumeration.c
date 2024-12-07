@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:59:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 00:56:14 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/07 12:32:20 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	presort_enumeration(t_list *a)
 	quick_sort(temp, NULL);
 	while (temp)
 	{
-		((t_data *)temp->content)->index = i--;
+		((t_data *)temp->content)->index = --i;
 		temp = temp->next;
 	}
 	while (temp)

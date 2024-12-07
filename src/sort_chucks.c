@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:06:37 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 01:41:14 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:39:43 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@ void	init_chucks(t_chucks *new_chucks)
 	new_chucks->min.loc = BOTTOM_B;
 }
 
+
 static void	quick_sort(t_list **a, t_list **b, t_chuck chuck)
 {
 	t_chucks	*new_chucks;
 
-	ft_printf("old %d\n", chuck.size);
-	if (chuck.size < 2)
+	if (chuck.size < 4)
+	{
+		simple_sort(a, b, chuck);
 		return ;
+	}
 	new_chucks = split_chuck(a, b, chuck);
-	ft_printf("new %d\n", new_chucks->big.size);
 	// reposition_chuck();
 	quick_sort(a, b, new_chucks->big);
 	quick_sort(a, b, new_chucks->mid);
