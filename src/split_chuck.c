@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:28:31 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 13:04:02 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:43:13 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,19 +101,21 @@ static void	handle_top_b(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 
 static void	handle_bottom_b(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 {
+	int	*max_min;
 	int	pivot;
 
-	pivot = setting_pivot(a, b, BOTTOM_B, size);
+	max_min = setting_pivot(a, b, BOTTOM_B, size);
+	pivot = (max_min[0] - max_min[1])/3;
 	while (size--)
 	{
-		if (((t_data *)(*a)->content)->index >= pivot/3 * 2)
+		if (((t_data *)(*a)->content)->index >= (pivot * 2) + max_min[1])
 		{
 			rrb(b);
 			pa(a, b);
 			new_chucks->big.size++;
 			new_chucks->big.loc = TOP_A;
 		}
-		else if (((t_data *)(*a)->content)->index < pivot/3)
+		else if (((t_data *)(*a)->content)->index < pivot + max_min[1])
 		{
 			rrb(b);
 			pa(a, b);
@@ -135,6 +137,8 @@ t_chucks	*split_chuck(t_list **a, t_list **b, t_chuck chuck)
 	t_chucks	*new_chucks;
 
 	new_chucks = malloc(sizeof(t_chucks));
+	if (!new_chucks)
+		return (NULL);
 	init_chucks(new_chucks);
 	if (!new_chucks)
 		return (NULL);

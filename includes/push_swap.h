@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:27:11 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 01:37:26 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:40:16 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	init_chucks(t_chucks *new_chucks);
 t_chucks	*split_chuck(t_list **a, t_list **b, t_chuck chuck);
 
 // setting_pivot
-int	setting_pivot(t_list **a, t_list **b, t_loc loc, int size);
+int	*setting_pivot(t_list **a, t_list **b, t_loc loc, int size);
 
 // operations
 void	sa(t_list **a);

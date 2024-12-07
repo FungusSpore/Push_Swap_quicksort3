@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 13:16:25 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 13:39:41 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:49:30 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,44 @@ static void	sort_two(t_list **a)
 	return ;
 }
 
-static void	optimised_sort_three(t_list **a, int top_g_mid, int mid_g_bot, int bot_g_top)
+static void	optimised_sort_three(t_list **a, int t_m, int m_b, int b_t)
 {
-	if (!top_g_mid && mid_g_bot && bot_g_top)
+	if (!t_m && m_b && b_t)
 	{
 		sa(a);
 		ra(a);
 	}
-	if (top_g_mid && !mid_g_bot && bot_g_top)
+	if (t_m && !condition[1] && condition[2])
 		sa(a);
-	if (!top_g_mid && mid_g_bot && !bot_g_top)
+	if (!t_m && condition[1] && !condition[2])
 		rra(a);
-	if (top_g_mid && !mid_g_bot && !bot_g_top)
+	if (t_m && !m && !condition[2])
 		ra(a);
-	if (top_g_mid && mid_g_bot && !bot_g_top)
+	if (t_m && m_b && !condition[2])
 	{
 		sa(a);
 		rra(a);
 	}
 }
 
+static void	regular_logic();
+
+// 0 top greater than mid
+// 1 mid greater than bot
+// 2 bot greater than top
 static void	sort_three(t_list **a)
 {
-	int	top_g_mid;
-	int mid_g_bot;
-	int	bot_g_top;
+	int	condition[3];
 
-	top_g_mid = ((t_data *)(*a)->content)->data >\
+	condition[0] = ((t_data *)(*a)->content)->data >\
 		((t_data *)(*a)->next->content)->data;
-	mid_g_bot = ((t_data *)(*a)->next->content)->data >\
+	condition[1] = ((t_data *)(*a)->next->content)->data >\
 		((t_data *)(*a)->next->next->content)->data;
-	bot_g_top = ((t_data *)(*a)->next->next->content)->data >\
+	condition[2] = ((t_data *)(*a)->next->next->content)->data >\
 		((t_data *)(*a)->content)->data;
 	if (ft_lstsize(*a) == 3)
-		optimised_sort_three(a, top_g_mid, mid_g_bot, bot_g_top);
-	regular_logic(a, top_g_mid, mid_g_bot, bot_g_top);
+		optimised_sort_three(a, condition);
+	regular_logic(a, condition);
 }
 
 void	simple_sort(t_list **a, t_list **b, t_chuck chuck)
