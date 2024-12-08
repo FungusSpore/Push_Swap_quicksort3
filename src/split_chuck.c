@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:28:31 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/08 18:09:33 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/08 23:27:07 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,20 @@ static void	handle_top_a(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 		{
 			ra(a);
 			new_chucks->big.size++;
+			new_chucks->big.loc = BOTTOM_A;
 		}
 		else if (((t_data *)(*a)->content)->index < pivot + max_min[1])
 		{
 			pb(a, b);
 			rb(b);
 			new_chucks->min.size++;
+			new_chucks->min.loc = BOTTOM_B;
 		}
 		else
 		{
 			pb(a, b);
 			new_chucks->mid.size++;
+			new_chucks->mid.loc = TOP_B;
 		}
 	}
 	/*printf("big %d\n", new_chucks->big.size);*/
@@ -134,13 +137,13 @@ static void	handle_bottom_b(t_list **a, t_list **b, t_chucks *new_chucks, int si
 			pa(a, b);
 			ra(a);
 			new_chucks->min.size++;
-			new_chucks->big.loc = BOTTOM_A;
+			new_chucks->min.loc = BOTTOM_A;
 		}
 		else
 		{
-			rb(b);
+			rrb(b);
 			new_chucks->mid.size++;
-			new_chucks->big.loc = TOP_B;
+			new_chucks->mid.loc = TOP_B;
 		}
 	}
 }

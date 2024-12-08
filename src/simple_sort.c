@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 13:16:25 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/08 17:05:57 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/08 23:01:24 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	simple_sort(t_list **a, t_list **b, t_chuck chuck)
 		if (chuck.loc == TOP_B)
 			pa(a, b);
 		if (chuck.loc == BOTTOM_A)
-			ra(a);
+			rra(a);
 	}
 	if (chuck.size < 2)
 		return ;
