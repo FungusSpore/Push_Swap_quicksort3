@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:47:06 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 00:20:43 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:32:39 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
+	/*t_list	*instructions;*/
 
 	a = NULL;
 	b = NULL;
+	/*instructions = NULL;*/
 	if (argc < 2)
 		return (1);
 	if (check_errors(argc, argv))
@@ -57,4 +59,6 @@ int	main(int argc, char **argv)
 	a = init_stack_a(argc, argv, a);
 	presort_enumeration(a);
 	sort_chucks(&a, &b);
+	/*clean_instructions(instructions);*/
+	return (0);
 }

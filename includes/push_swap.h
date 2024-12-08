@@ -6,14 +6,14 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:27:11 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 00:19:42 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:33:29 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# include "../libft/libft.h"
 
 typedef enum s_loc
 {
