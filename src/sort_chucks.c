@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:06:37 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 18:40:08 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/08 18:02:11 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,16 @@ static void	quick_sort(t_list **a, t_list **b, t_chuck chuck)
 {
 	t_chucks	*new_chucks;
 
+	/*printf("base case\n");*/
 	if (chuck.size < 4)
 	{
 		simple_sort(a, b, chuck);
 		return ;
 	}
+	/*printf("split\n");*/
 	new_chucks = split_chuck(a, b, chuck);
 	// reposition_chuck();
+	/*printf("recursion\n");*/
 	quick_sort(a, b, new_chucks->big);
 	quick_sort(a, b, new_chucks->mid);
 	quick_sort(a, b, new_chucks->min);

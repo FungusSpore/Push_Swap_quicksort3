@@ -6,11 +6,12 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 13:16:25 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 18:49:30 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/08 17:05:57 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 static void	sort_two(t_list **a)
 {
@@ -20,27 +21,59 @@ static void	sort_two(t_list **a)
 	return ;
 }
 
-static void	optimised_sort_three(t_list **a, int t_m, int m_b, int b_t)
+static void	optimised_sort_three(t_list **a, int *condition)
 {
-	if (!t_m && m_b && b_t)
+	if (!condition[0] && condition[1] && condition[2])
 	{
 		sa(a);
 		ra(a);
 	}
-	if (t_m && !condition[1] && condition[2])
+	if (condition[0] && !condition[1] && condition[2])
 		sa(a);
-	if (!t_m && condition[1] && !condition[2])
+	if (!condition[0] && condition[1] && !condition[2])
 		rra(a);
-	if (t_m && !m && !condition[2])
+	if (condition[0] && !condition[1] && !condition[2])
 		ra(a);
-	if (t_m && m_b && !condition[2])
+	if (condition[0] && condition[1] && !condition[2])
 	{
 		sa(a);
 		rra(a);
 	}
 }
 
-static void	regular_logic();
+static void	regular_sort_three(t_list **a, int *condition)
+{
+	if (!condition[0] && condition[1] && condition[2])
+	{
+		ra(a);
+		sa(a);
+		rra(a);
+	}
+	if (condition[0] && !condition[1] && condition[2])
+		sa(a);
+	if (!condition[0] && condition[1] && !condition[2])
+	{
+		ra(a);
+		sa(a);
+		rra(a);
+		sa(a);
+	}
+	if (condition[0] && !condition[1] && !condition[2])
+	{
+		sa(a);
+		ra(a);
+		sa(a);
+		rra(a);
+	}
+	if (condition[0] && condition[1] && !condition[2])
+	{
+		sa(a);
+		ra(a);
+		sa(a);
+		rra(a);
+		sa(a);
+	}
+}
 
 // 0 top greater than mid
 // 1 mid greater than bot
@@ -57,7 +90,8 @@ static void	sort_three(t_list **a)
 		((t_data *)(*a)->content)->data;
 	if (ft_lstsize(*a) == 3)
 		optimised_sort_three(a, condition);
-	regular_logic(a, condition);
+	else
+		regular_sort_three(a, condition);
 }
 
 void	simple_sort(t_list **a, t_list **b, t_chuck chuck)
@@ -81,9 +115,9 @@ void	simple_sort(t_list **a, t_list **b, t_chuck chuck)
 		return ;
 	if (chuck.size < 3)
 	{
-		sort_two();
+		sort_two(a);
 		return ;
 	}
-	sort_three();
+	sort_three(a);
 	return ;
 }

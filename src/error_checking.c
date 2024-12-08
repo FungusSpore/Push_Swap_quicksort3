@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:45:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 00:42:15 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/08 18:03:19 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_errors(int argc, char **argv)
 		str = argv[i];
 		while(*str)
 		{
-			if (!(ft_isdigit(*str) || *str == ' '))
+			if (!(ft_isdigit(*str) || *str == ' ' || *str == '-'))
 				return (1);
 			str++;
 		}
