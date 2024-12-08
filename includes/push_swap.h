@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:27:11 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/08 16:18:08 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:19:42 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int	*setting_pivot(t_list **a, t_list **b, t_loc loc, int size);
 // simple_sort
 void	simple_sort(t_list **a, t_list **b, t_chuck chuck);
 
+// simple_sort_logic
+void	regular_sort_three(t_list **a, int *condition);
+
 // operations
 void	sa(t_list **a);
 void	sb(t_list **b);
@@ -75,6 +78,5 @@ void	rr(t_list **a, t_list **b);
 void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
-
 
 #endif // !PUSH_SWAP_H

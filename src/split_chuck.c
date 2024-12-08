@@ -6,12 +6,11 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:28:31 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/08 23:27:07 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/08 23:32:33 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 static void	handle_top_a(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 {
@@ -42,9 +41,6 @@ static void	handle_top_a(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 			new_chucks->mid.loc = TOP_B;
 		}
 	}
-	/*printf("big %d\n", new_chucks->big.size);*/
-	/*printf("mid %d\n", new_chucks->mid.size);*/
-	/*printf("min %d\n", new_chucks->min.size);*/
 }
 
 static void	handle_bottom_a(t_list **a, t_list **b, t_chucks *new_chucks, int size)
@@ -156,20 +152,10 @@ t_chucks	*split_chuck(t_list **a, t_list **b, t_chuck chuck)
 	if (!new_chucks)
 		return (NULL);
 	init_chucks(new_chucks);
-	/*printf("here\n");*/
 	if (chuck.loc == TOP_A)
-	{
 		handle_top_a(a, b, new_chucks, chuck.size);
-		/*printf("TOP_A\n");*/
-	}
-	/*printf("haddle bottom a\n");*/
 	if (chuck.loc == BOTTOM_A)
-	{
-		/*printf("BOTTOM_B\n");*/
 		handle_bottom_a(a, b, new_chucks, chuck.size);
-	}
-
-
 	if (chuck.loc == TOP_B)
 		handle_top_b(a, b, new_chucks, chuck.size);
 	if (chuck.loc == BOTTOM_B)

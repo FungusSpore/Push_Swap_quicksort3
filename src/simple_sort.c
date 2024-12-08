@@ -6,12 +6,11 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 13:16:25 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/08 23:01:24 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:19:56 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 static void	sort_two(t_list **a)
 {
@@ -40,41 +39,6 @@ static void	optimised_sort_three(t_list **a, int *condition)
 		rra(a);
 	}
 }
-
-static void	regular_sort_three(t_list **a, int *condition)
-{
-	if (!condition[0] && condition[1] && condition[2])
-	{
-		ra(a);
-		sa(a);
-		rra(a);
-	}
-	if (condition[0] && !condition[1] && condition[2])
-		sa(a);
-	if (!condition[0] && condition[1] && !condition[2])
-	{
-		ra(a);
-		sa(a);
-		rra(a);
-		sa(a);
-	}
-	if (condition[0] && !condition[1] && !condition[2])
-	{
-		sa(a);
-		ra(a);
-		sa(a);
-		rra(a);
-	}
-	if (condition[0] && condition[1] && !condition[2])
-	{
-		sa(a);
-		ra(a);
-		sa(a);
-		rra(a);
-		sa(a);
-	}
-}
-
 // 0 top greater than mid
 // 1 mid greater than bot
 // 2 bot greater than top

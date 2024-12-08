@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:47:06 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 18:40:27 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:20:43 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static t_list	*init_stack_a(int argc, char **argv, t_list *a)
 	}
 	return (a);
 }
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;
