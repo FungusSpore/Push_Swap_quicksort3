@@ -6,11 +6,12 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:47:06 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 14:58:57 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:44:28 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 static t_list	*init_stack_a(int argc, char **argv, t_list *a)
 {
@@ -19,8 +20,7 @@ static t_list	*init_stack_a(int argc, char **argv, t_list *a)
 	int			i;
 	int			j;
 
-	i = 1;
-	j = 0;
+	i = 1; j = 0;
 	while (i < argc)
 	{
 		nums = ft_split(argv[i], ' ');

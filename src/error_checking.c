@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:45:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 14:56:02 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:59:19 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static void	del(void *data)
 static int	is_error(char *nums, t_list **shown_nums)
 {
 	t_list *temp;
-	int		i;
+	long		i;
+	long		*data;
 
 	temp = *shown_nums;
 	i = 0;
@@ -61,15 +62,18 @@ static int	is_error(char *nums, t_list **shown_nums)
 			return (1);
 		i++;
 	}
+	i = ft_atol(nums);
+	if (INT_MAX < i || i < INT_MIN)
+		return (1);
 	while (temp)
 	{
-		if (ft_strncmp(nums, (char *)temp->content, -1) == 0)
+		if (i == (*(long *)temp->content))
 			return (1);
 		temp = temp->next;
 	}
-	ft_lstadd_back(shown_nums, ft_lstnew(nums));
-	if (INT_MAX < ft_atol(nums) || ft_atol(nums) < INT_MIN)
-		return (1);
+	data = malloc(sizeof(long));
+	*data = i;
+	ft_lstadd_back(shown_nums, ft_lstnew(data));
 	return (0);
 }
 
@@ -86,6 +90,11 @@ int	check_errors(int argc, char **argv)
 	while (i < argc)
 	{
 		nums = ft_split(argv[i], ' ');
+		if (!*nums)
+		{
+			free(nums);
+			return (1);
+		}
 		while (nums[j])
 			if (is_error(nums[j++], &shown_nums))
 				return (1);
