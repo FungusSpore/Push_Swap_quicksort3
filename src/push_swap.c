@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:47:06 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 00:32:39 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:58:57 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,25 @@ static t_list	*init_stack_a(int argc, char **argv, t_list *a)
 	return (a);
 }
 
+int		is_sorted(t_list *a, int reverse)
+{
+	int	prev;
+
+	if (!a)
+		return (-1);
+	prev = ((t_data *)a->content)->data;
+	while (a->next)
+	{
+		a = a->next;
+		if (prev > ((t_data*)a->content)->data && !reverse)
+			return (0);
+		if (prev < ((t_data*)a->content)->data && reverse)
+			return (0);
+		prev = ((t_data *)a->content)->data;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;
@@ -53,10 +72,12 @@ int	main(int argc, char **argv)
 		return (1);
 	if (check_errors(argc, argv))
 	{
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
 	a = init_stack_a(argc, argv, a);
+	if (is_sorted(a, 0))
+		return (0);
 	presort_enumeration(a);
 	sort_chucks(&a, &b);
 	/*clean_instructions(instructions);*/

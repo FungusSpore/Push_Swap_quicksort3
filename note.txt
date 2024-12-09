@@ -1,6 +1,0 @@
-123..
-132.. ra sa rra
-213.. sa
-231.. ra sa rra sa
-312.. sa ra sa rra
-321.. sa ra sa rra sa
