@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_chuck.c                                      :+:      :+:    :+:   */
+/*   handle_bottom_a.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 18:28:31 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 17:44:28 by jianwong         ###   ########.fr       */
+/*   Created: 2024/12/09 17:36:00 by jianwong          #+#    #+#             */
+/*   Updated: 2024/12/09 17:53:48 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	is_min(t_list **a, t_list **b, t_chucks *new_chucks)
 {
+	rra(a);
 	pb(a, b);
 	rb(b);
 	new_chucks->min.size++;
@@ -22,6 +23,7 @@ static void	is_min(t_list **a, t_list **b, t_chucks *new_chucks)
 
 static void	is_mid(t_list **a, t_list **b, t_chucks *new_chucks)
 {
+	rra(a);
 	pb(a, b);
 	new_chucks->mid.size++;
 	new_chucks->mid.loc = TOP_B;
@@ -29,45 +31,28 @@ static void	is_mid(t_list **a, t_list **b, t_chucks *new_chucks)
 
 static void	is_big(t_list **a, t_chucks *new_chucks)
 {
-	ra(a);
+	rra(a);
 	new_chucks->big.size++;
-	new_chucks->big.loc = BOTTOM_A;
+	new_chucks->big.loc = TOP_A;
 }
 
-static void	handle_top_a(t_list **a, t_list **b, t_chucks *new_chucks, int size)
+void	handle_bottom_a(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 {
-	int	pivot;
-	int	*max_min;
+	int		pivot;
+	int		*max_min;
+	t_list	*temp;
 
-	max_min = setting_pivot(a, b, TOP_A, size);
+	max_min = setting_pivot(a, b, BOTTOM_A, size);
 	pivot = (max_min[0] - max_min[1]) / 3;
 	while (size--)
 	{
-		if (((t_data *)(*a)->content)->index > (pivot * 2) + max_min[1])
+		temp = ft_lstlast(*a);
+		if (((t_data *)temp->content)->index > (pivot * 2) + max_min[1])
 			is_big(a, new_chucks);
-		else if (((t_data *)(*a)->content)->index < pivot + max_min[1])
+		else if (((t_data *)temp->content)->index < pivot + max_min[1])
 			is_min(a, b, new_chucks);
 		else
 			is_mid(a, b, new_chucks);
 	}
 	free(max_min);
-}
-
-t_chucks	*split_chuck(t_list **a, t_list **b, t_chuck chuck)
-{
-	t_chucks	*new_chucks;
-
-	new_chucks = malloc(sizeof(t_chucks));
-	if (!new_chucks)
-		return (NULL);
-	init_chucks(new_chucks);
-	if (chuck.loc == TOP_A)
-		handle_top_a(a, b, new_chucks, chuck.size);
-	if (chuck.loc == BOTTOM_A)
-		handle_bottom_a(a, b, new_chucks, chuck.size);
-	if (chuck.loc == TOP_B)
-		handle_top_b(a, b, new_chucks, chuck.size);
-	if (chuck.loc == BOTTOM_B)
-		handle_bottom_b(a, b, new_chucks, chuck.size);
-	return (new_chucks);
 }

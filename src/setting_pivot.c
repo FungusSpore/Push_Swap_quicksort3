@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 01:19:48 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 18:33:06 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:52:41 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	*from_the_bottom(t_list *lst, int size)
 {
-	int *max_min;
+	int	*max_min;
 	int	index;
 	int	to_adjust;
 
@@ -42,7 +42,7 @@ static int	*from_the_bottom(t_list *lst, int size)
 
 static int	*from_the_top(t_list *lst, int size)
 {
-	int *max_min;
+	int	*max_min;
 	int	index;
 
 	if (!lst)

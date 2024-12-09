@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 23:58:41 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/06 23:58:58 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:59:28 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	s_ab(t_list **a)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (ft_lstsize(*a) < 2)
 		return ;

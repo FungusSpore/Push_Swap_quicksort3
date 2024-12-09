@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 12:57:00 by jianwong          #+#    #+#             */
-/*   Updated: 2024/11/26 13:03:47 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:59:50 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,3 @@ int	ft_printf(const char *str, ...)
 	va_end(ptr);
 	return (result);
 }
-

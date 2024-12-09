@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:06:37 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 00:20:12 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:46:32 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	quick_sort(t_list **a, t_list **b, t_chuck chuck)
 
 void	sort_chucks(t_list **a, t_list **b)
 {
-	t_chuck chuck;
+	t_chuck	chuck;
 
 	chuck.loc = TOP_A;
 	chuck.size = ft_lstsize(*a);

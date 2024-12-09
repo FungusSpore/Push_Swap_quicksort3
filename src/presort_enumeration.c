@@ -6,29 +6,23 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:59:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 12:32:20 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:46:07 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
-
-static void	del(void *data)
-{
-	free(data);
-}
 
 static void	*get_data(void *data)
 {
 	return (data);
 }
 
-static void	quick_sort_helper(t_list **currentj, t_list **currenti, t_list *pivot)
+static void	quick_sort_2(t_list **currentj, t_list **currenti, t_list *pivot)
 {
 	t_list	*temp;
 
-	if (((t_data *)pivot->content)->data < ((t_data *)(*currentj)->content)->data \
-		|| *currentj == pivot)
+	if (((t_data *)pivot->content)->data < \
+		((t_data *)(*currentj)->content)->data || *currentj == pivot)
 	{
 		temp = (*currenti)->content;
 		(*currenti)->content = (*currentj)->content;
@@ -53,7 +47,7 @@ static void	quick_sort(t_list *start, t_list *end)
 	while (pivot->next != end)
 		pivot = pivot->next;
 	while (currentj != end)
-		quick_sort_helper(&currentj, &currenti, pivot);
+		quick_sort_2(&currentj, &currenti, pivot);
 	quick_sort(start, currenti);
 	quick_sort(currenti->next, end);
 }
@@ -61,24 +55,25 @@ static void	quick_sort(t_list *start, t_list *end)
 void	presort_enumeration(t_list *a)
 {
 	t_list	*temp;
+	t_list	*base_temp;
 	t_list	*next;
 	int		i;
 
 	if (!a)
 		return ;
 	i = ft_lstsize(a);
-	temp = ft_lstmap(a, get_data, del);	
+	temp = ft_lstmap(a, get_data, del);
 	quick_sort(temp, NULL);
+	base_temp = temp;
 	while (temp)
 	{
 		((t_data *)temp->content)->index = --i;
 		temp = temp->next;
 	}
-	while (temp)
+	while (base_temp)
 	{
-		next = temp->next;
-		free(temp);
-		temp = next;
+		next = base_temp->next;
+		free(base_temp);
+		base_temp = next;
 	}
 }
-

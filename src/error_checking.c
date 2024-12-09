@@ -6,12 +6,11 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:45:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 15:59:19 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:50:18 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 static long	ft_atol(const char *nptr)
 {
@@ -39,19 +38,8 @@ static long	ft_atol(const char *nptr)
 	return (result);
 }
 
-static void	del(void *data)
+static int	error_logic(char *nums, long i)
 {
-	free(data);
-}
-
-static int	is_error(char *nums, t_list **shown_nums)
-{
-	t_list *temp;
-	long		i;
-	long		*data;
-
-	temp = *shown_nums;
-	i = 0;
 	if (nums[i] == '-' || nums[i] == '+')
 		i++;
 	if (!nums[i])
@@ -62,6 +50,19 @@ static int	is_error(char *nums, t_list **shown_nums)
 			return (1);
 		i++;
 	}
+	return (0);
+}
+
+static int	is_error(char *nums, t_list **shown_nums)
+{
+	t_list	*temp;
+	long	i;
+	long	*data;
+
+	temp = *shown_nums;
+	i = 0;
+	if (error_logic(nums, i))
+		return (1);
 	i = ft_atol(nums);
 	if (INT_MAX < i || i < INT_MIN)
 		return (1);
@@ -84,10 +85,9 @@ int	check_errors(int argc, char **argv)
 	t_list	*shown_nums;
 	char	**nums;
 
-	i = 1;
-	j = 0;
+	i = 0;
 	shown_nums = NULL;
-	while (i < argc)
+	while (++i < argc)
 	{
 		nums = ft_split(argv[i], ' ');
 		if (!*nums)
@@ -95,13 +95,13 @@ int	check_errors(int argc, char **argv)
 			free(nums);
 			return (1);
 		}
+		j = 0;
 		while (nums[j])
 			if (is_error(nums[j++], &shown_nums))
 				return (1);
-		j--;
+		while (j--)
+			free(nums[j]);
 		free(nums);
-		j = 0;
-		i++;
 	}
 	ft_lstclear(&shown_nums, del);
 	return (0);
