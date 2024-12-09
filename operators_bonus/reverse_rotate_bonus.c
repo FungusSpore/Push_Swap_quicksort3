@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   reverse_rotate_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 23:57:28 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 23:25:20 by jianwong         ###   ########.fr       */
+/*   Created: 2024/12/09 23:24:38 by jianwong          #+#    #+#             */
+/*   Updated: 2024/12/09 23:27:26 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,24 @@ static void	rr_ab(t_list **a)
 	*a = current;
 }
 
-void	rra(t_list **a)
+void	b_rra(t_list **a)
 {
 	if (!(*a)->next)
 		return ;
 	rr_ab(a);
-	ft_printf("rra\n");
 }
 
-void	rrb(t_list **b)
+void	b_rrb(t_list **b)
 {
 	if (!(*b)->next)
 		return ;
 	rr_ab(b);
-	ft_printf("rrb\n");
 }
 
-void	rrr(t_list **a, t_list **b)
+void	b_rrr(t_list **a, t_list **b)
 {
 	if (!(*a)->next || !(*b)->next)
 		return ;
 	rr_ab(a);
 	rr_ab(b);
-	ft_printf("rrr\n");
 }
