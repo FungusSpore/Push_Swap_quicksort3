@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:45:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/10 22:44:42 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:18:07 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	error_logic(char *nums)
 
 static int	is_error(char *nums, t_list **shown_nums)
 {
-	t_list *temp;
+	t_list		*temp;
 	long		i;
 	long		*data;
 

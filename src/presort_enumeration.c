@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:59:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/10 22:41:32 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:16:18 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void	*get_data(void *data)
 	return (data);
 }
 
-static void	quick_sort_helper(t_list **currentj, t_list **currenti, t_list *pivot)
+static void	quick_sort_2(t_list **currentj, t_list **currenti, t_list *pivot)
 {
 	t_list	*temp;
 
-	if (((t_data *)pivot->content)->data < ((t_data *)(*currentj)->content)->data \
-		|| *currentj == pivot)
+	if (((t_data *)pivot->content)->data < \
+		((t_data *)(*currentj)->content)->data || *currentj == pivot)
 	{
 		temp = (*currenti)->content;
 		(*currenti)->content = (*currentj)->content;
@@ -47,7 +47,7 @@ static void	quick_sort(t_list *start, t_list *end)
 	while (pivot->next != end)
 		pivot = pivot->next;
 	while (currentj != end)
-		quick_sort_helper(&currentj, &currenti, pivot);
+		quick_sort_2(&currentj, &currenti, pivot);
 	quick_sort(start, currenti);
 	quick_sort(currenti->next, end);
 }
@@ -62,7 +62,7 @@ void	presort_enumeration(t_list *a)
 	if (!a)
 		return ;
 	i = ft_lstsize(a);
-	temp = ft_lstmap(a, get_data, del);	
+	temp = ft_lstmap(a, get_data, del);
 	quick_sort(temp, NULL);
 	base_temp = temp;
 	while (temp)
@@ -77,4 +77,3 @@ void	presort_enumeration(t_list *a)
 		base_temp = next;
 	}
 }
-

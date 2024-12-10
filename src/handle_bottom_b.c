@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 22:53:52 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/10 22:59:18 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:17:38 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static void	handle_mid(t_list **b, t_chucks *new_chucks)
 
 void	handle_bottom_b(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 {
-	int	*max_min;
-	int	pivot;
-	t_list *temp;
+	int		*max_min;
+	int		pivot;
+	t_list	*temp;
 
 	max_min = setting_pivot(a, b, BOTTOM_B, size);
-	pivot = (max_min[0] - max_min[1])/3;
+	pivot = (max_min[0] - max_min[1]) / 3;
 	while (size--)
 	{
 		temp = ft_lstlast(*b);

@@ -6,19 +6,18 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:47:06 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/10 22:41:26 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:19:06 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdlib.h>
 
 static t_list	*init_stack_a(int argc, char **argv, t_list *a)
 {
 	t_data	*data;
-	char		**nums;
-	int			i;
-	int			j;
+	char	**nums;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -47,7 +46,7 @@ void	del(void *data)
 	free(data);
 }
 
-int		is_sorted(t_list *a, int reverse)
+int	is_sorted(t_list *a, int reverse)
 {
 	int	prev;
 
@@ -57,9 +56,9 @@ int		is_sorted(t_list *a, int reverse)
 	while (a->next)
 	{
 		a = a->next;
-		if (prev > ((t_data*)a->content)->data && !reverse)
+		if (prev > ((t_data *)a->content)->data && !reverse)
 			return (0);
-		if (prev < ((t_data*)a->content)->data && reverse)
+		if (prev < ((t_data *)a->content)->data && reverse)
 			return (0);
 		prev = ((t_data *)a->content)->data;
 	}

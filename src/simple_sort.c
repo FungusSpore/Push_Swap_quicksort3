@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 13:16:25 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/10 22:50:59 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:13:51 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ static void	sort_three(t_list **a)
 {
 	int	condition[3];
 
-	condition[0] = ((t_data *)(*a)->content)->data >\
+	condition[0] = ((t_data *)(*a)->content)->data > \
 		((t_data *)(*a)->next->content)->data;
-	condition[1] = ((t_data *)(*a)->next->content)->data >\
+	condition[1] = ((t_data *)(*a)->next->content)->data > \
 		((t_data *)(*a)->next->next->content)->data;
-	condition[2] = ((t_data *)(*a)->next->next->content)->data >\
+	condition[2] = ((t_data *)(*a)->next->next->content)->data > \
 		((t_data *)(*a)->content)->data;
 	if (ft_lstsize(*a) == 3)
 		optimised_sort_three(a, condition);
