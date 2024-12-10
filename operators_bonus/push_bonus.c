@@ -1,50 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   push_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 23:58:12 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/11 00:41:25 by jianwong         ###   ########.fr       */
+/*   Created: 2024/12/06 23:59:31 by jianwong          #+#    #+#             */
+/*   Updated: 2024/12/10 23:32:07 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	r_ab(t_list **a)
+void	pa(t_list **a, t_list **b)
 {
 	t_list	*temp;
 
-	if (!*a || !(*a)->next)
+	if (!*b)
 		return ;
-	temp = ft_lstlast(*a);
+	temp = *b;
+	*b = (*b)->next;
 	temp->next = *a;
+	*a = temp;
+}
+
+void	pb(t_list **a, t_list **b)
+{
+	t_list	*temp;
+
+	if (!*a)
+		return ;
+	temp = *a;
 	*a = (*a)->next;
-	temp->next->next = NULL;
-}
-
-void	ra(t_list **a)
-{
-	if (!*a || !(*a)->next)
-		return ;
-	r_ab(a);
-	ft_printf("ra\n");
-}
-
-void	rb(t_list **b)
-{
-	if (!(*b) || !(*b)->next)
-		return ;
-	r_ab(b);
-	ft_printf("rb\n");
-}
-
-void	rr(t_list **a, t_list **b)
-{
-	if (!*a || !(*a)->next || !*b || !(*b)->next)
-		return ;
-	r_ab(a);
-	r_ab(b);
-	ft_printf("rr\n");
+	temp->next = *b;
+	*b = temp;
 }
