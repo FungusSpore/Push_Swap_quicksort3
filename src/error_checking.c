@@ -6,12 +6,11 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:45:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 15:59:19 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:34:08 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 static long	ft_atol(const char *nptr)
 {
@@ -84,10 +83,10 @@ int	check_errors(int argc, char **argv)
 	t_list	*shown_nums;
 	char	**nums;
 
-	i = 1;
-	j = 0;
+	i = 0;
+	j = -1;
 	shown_nums = NULL;
-	while (i < argc)
+	while (++i < argc)
 	{
 		nums = ft_split(argv[i], ' ');
 		if (!*nums)
@@ -95,13 +94,12 @@ int	check_errors(int argc, char **argv)
 			free(nums);
 			return (1);
 		}
-		while (nums[j])
-			if (is_error(nums[j++], &shown_nums))
+		while (nums[++j])
+			if (is_error(nums[j], &shown_nums))
 				return (1);
-		j--;
+		while (j--)
+			free(nums[j]);
 		free(nums);
-		j = 0;
-		i++;
 	}
 	ft_lstclear(&shown_nums, del);
 	return (0);
