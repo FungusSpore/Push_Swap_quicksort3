@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:45:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/10 19:34:08 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:44:42 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,10 @@ static long	ft_atol(const char *nptr)
 	return (result);
 }
 
-static void	del(void *data)
+static int	error_logic(char *nums)
 {
-	free(data);
-}
+	long	i;
 
-static int	is_error(char *nums, t_list **shown_nums)
-{
-	t_list *temp;
-	long		i;
-	long		*data;
-
-	temp = *shown_nums;
 	i = 0;
 	if (nums[i] == '-' || nums[i] == '+')
 		i++;
@@ -61,6 +53,18 @@ static int	is_error(char *nums, t_list **shown_nums)
 			return (1);
 		i++;
 	}
+	return (0);
+}
+
+static int	is_error(char *nums, t_list **shown_nums)
+{
+	t_list *temp;
+	long		i;
+	long		*data;
+
+	temp = *shown_nums;
+	if (error_logic(nums))
+		return (1);
 	i = ft_atol(nums);
 	if (INT_MAX < i || i < INT_MIN)
 		return (1);

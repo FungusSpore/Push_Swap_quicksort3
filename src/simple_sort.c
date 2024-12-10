@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 13:16:25 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 00:19:56 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:50:59 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	optimised_sort_three(t_list **a, int *condition)
 		rra(a);
 	}
 }
+
 // 0 top greater than mid
 // 1 mid greater than bot
 // 2 bot greater than top

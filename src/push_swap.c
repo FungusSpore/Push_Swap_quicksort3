@@ -6,12 +6,12 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:47:06 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 15:44:28 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:41:26 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 static t_list	*init_stack_a(int argc, char **argv, t_list *a)
 {
@@ -20,8 +20,9 @@ static t_list	*init_stack_a(int argc, char **argv, t_list *a)
 	int			i;
 	int			j;
 
-	i = 1; j = 0;
-	while (i < argc)
+	i = 0;
+	j = 0;
+	while (++i < argc)
 	{
 		nums = ft_split(argv[i], ' ');
 		while (nums[j])
@@ -33,11 +34,17 @@ static t_list	*init_stack_a(int argc, char **argv, t_list *a)
 			data->index = 0;
 			ft_lstadd_back(&a, ft_lstnew(data));
 		}
+		while (j--)
+			free(nums[j]);
 		free(nums);
 		j = 0;
-		i++;
 	}
 	return (a);
+}
+
+void	del(void *data)
+{
+	free(data);
 }
 
 int		is_sorted(t_list *a, int reverse)
@@ -63,11 +70,9 @@ int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
-	/*t_list	*instructions;*/
 
 	a = NULL;
 	b = NULL;
-	/*instructions = NULL;*/
 	if (argc < 2)
 		return (1);
 	if (check_errors(argc, argv))
@@ -80,6 +85,9 @@ int	main(int argc, char **argv)
 		return (0);
 	presort_enumeration(a);
 	sort_chucks(&a, &b);
-	/*clean_instructions(instructions);*/
+	if (a)
+		ft_lstclear(&a, del);
+	if (b)
+		ft_lstclear(&a, del);
 	return (0);
 }

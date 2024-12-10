@@ -6,17 +6,11 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:59:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/07 12:32:20 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:41:32 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
-
-static void	del(void *data)
-{
-	free(data);
-}
 
 static void	*get_data(void *data)
 {
@@ -62,6 +56,7 @@ void	presort_enumeration(t_list *a)
 {
 	t_list	*temp;
 	t_list	*next;
+	t_list	*base_temp;
 	int		i;
 
 	if (!a)
@@ -69,16 +64,17 @@ void	presort_enumeration(t_list *a)
 	i = ft_lstsize(a);
 	temp = ft_lstmap(a, get_data, del);	
 	quick_sort(temp, NULL);
+	base_temp = temp;
 	while (temp)
 	{
 		((t_data *)temp->content)->index = --i;
 		temp = temp->next;
 	}
-	while (temp)
+	while (base_temp)
 	{
-		next = temp->next;
-		free(temp);
-		temp = next;
+		next = base_temp->next;
+		free(base_temp);
+		base_temp = next;
 	}
 }
 

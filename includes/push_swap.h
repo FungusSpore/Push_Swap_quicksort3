@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:27:11 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 00:33:29 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:03:36 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data
 }			t_data;
 
 // push_swap.c
+void	del(void *data);
 
 // error_checking.c
 int	check_errors(int argc, char **argv);
@@ -56,6 +57,9 @@ void	init_chucks(t_chucks *new_chucks);
 
 // split_chucks
 t_chucks	*split_chuck(t_list **a, t_list **b, t_chuck chuck);
+void	handle_bottom_a(t_list **a, t_list **b, t_chucks *new_chucks, int size);
+void	handle_bottom_b(t_list **a, t_list **b, t_chucks *new_chucks, int size);
+void	handle_top_b(t_list **a, t_list **b, t_chucks *new_chucks, int size);
 
 // setting_pivot
 int	*setting_pivot(t_list **a, t_list **b, t_loc loc, int size);
