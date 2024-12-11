@@ -8,7 +8,7 @@ SOURCE =\
 		 src/simple_sort_logic.c src/handle_bottom_a.c src/handle_bottom_b.c src/handle_top_b.c \
 		 operators/push.c operators/reverse_rotate.c operators/rotate.c operators/swap.c
 BONUS =\
-			 bonus/checker.c bonus/checker_utils.c bonus/error_checking.c \
+			 bonus/checker.c bonus/checker_utils.c bonus/error_checking.c bonus/checker_helper.c \
 			 operators_bonus/push_bonus.c operators_bonus/reverse_rotate_bonus.c \
 			 operators_bonus/rotate_bonus.c operators_bonus/swap_bonus.c
 OBJ = $(SOURCE:.c=.o)
