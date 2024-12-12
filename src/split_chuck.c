@@ -6,13 +6,20 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:28:31 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 17:44:28 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:12:20 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	is_min(t_list **a, t_list **b, t_chucks *new_chucks)
+static void	handle_big(t_list **a, t_chucks *new_chucks)
+{
+	ra(a);
+	new_chucks->big.size++;
+	new_chucks->big.loc = BOTTOM_A;
+}
+
+static void	handle_min(t_list **a, t_list **b, t_chucks *new_chucks)
 {
 	pb(a, b);
 	rb(b);
@@ -20,18 +27,11 @@ static void	is_min(t_list **a, t_list **b, t_chucks *new_chucks)
 	new_chucks->min.loc = BOTTOM_B;
 }
 
-static void	is_mid(t_list **a, t_list **b, t_chucks *new_chucks)
+static void	handle_mid(t_list **a, t_list **b, t_chucks *new_chucks)
 {
 	pb(a, b);
 	new_chucks->mid.size++;
 	new_chucks->mid.loc = TOP_B;
-}
-
-static void	is_big(t_list **a, t_chucks *new_chucks)
-{
-	ra(a);
-	new_chucks->big.size++;
-	new_chucks->big.loc = BOTTOM_A;
 }
 
 static void	handle_top_a(t_list **a, t_list **b, t_chucks *new_chucks, int size)
@@ -44,11 +44,11 @@ static void	handle_top_a(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 	while (size--)
 	{
 		if (((t_data *)(*a)->content)->index > (pivot * 2) + max_min[1])
-			is_big(a, new_chucks);
+			handle_big(a, new_chucks);
 		else if (((t_data *)(*a)->content)->index < pivot + max_min[1])
-			is_min(a, b, new_chucks);
+			handle_min(a, b, new_chucks);
 		else
-			is_mid(a, b, new_chucks);
+			handle_mid(a, b, new_chucks);
 	}
 	free(max_min);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 23:25:56 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 23:27:45 by jianwong         ###   ########.fr       */
+/*   Created: 2024/12/06 23:58:41 by jianwong          #+#    #+#             */
+/*   Updated: 2024/12/10 23:32:40 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ static void	s_ab(t_list **a)
 	*a = temp;
 }
 
-void	b_sa(t_list **a)
+void	sa(t_list **a)
 {
 	s_ab(a);
 }
 
-void	b_sb(t_list **b)
+void	sb(t_list **b)
 {
 	s_ab(b);
 }
 
-void	b_ss(t_list **a, t_list **b)
+void	ss(t_list **a, t_list **b)
 {
 	s_ab(a);
 	s_ab(b);

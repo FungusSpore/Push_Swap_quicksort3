@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:59:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 17:46:07 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:16:18 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static void	quick_sort(t_list *start, t_list *end)
 void	presort_enumeration(t_list *a)
 {
 	t_list	*temp;
-	t_list	*base_temp;
 	t_list	*next;
+	t_list	*base_temp;
 	int		i;
 
 	if (!a)

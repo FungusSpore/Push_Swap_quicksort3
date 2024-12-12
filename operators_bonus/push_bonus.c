@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 23:24:16 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 23:27:17 by jianwong         ###   ########.fr       */
+/*   Created: 2024/12/06 23:59:31 by jianwong          #+#    #+#             */
+/*   Updated: 2024/12/10 23:32:07 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	b_pa(t_list **a, t_list **b)
+void	pa(t_list **a, t_list **b)
 {
 	t_list	*temp;
 
@@ -24,7 +24,7 @@ void	b_pa(t_list **a, t_list **b)
 	*a = temp;
 }
 
-void	b_pb(t_list **a, t_list **b)
+void	pb(t_list **a, t_list **b)
 {
 	t_list	*temp;
 

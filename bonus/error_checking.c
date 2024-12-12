@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 17:45:38 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/10 23:18:07 by jianwong         ###   ########.fr       */
+/*   Created: 2024/12/10 23:35:46 by jianwong          #+#    #+#             */
+/*   Updated: 2024/12/10 23:36:03 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 static long	ft_atol(const char *nptr)
 {

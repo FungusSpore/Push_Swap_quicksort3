@@ -5,14 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 17:27:20 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 17:48:01 by jianwong         ###   ########.fr       */
+/*   Created: 2024/12/10 22:53:52 by jianwong          #+#    #+#             */
+/*   Updated: 2024/12/10 23:17:38 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	is_min(t_list **a, t_list **b, t_chucks *new_chucks)
+static void	handle_big(t_list **a, t_list **b, t_chucks *new_chucks)
+{
+	rrb(b);
+	pa(a, b);
+	new_chucks->big.size++;
+	new_chucks->big.loc = TOP_A;
+}
+
+static void	handle_min(t_list **a, t_list **b, t_chucks *new_chucks)
 {
 	rrb(b);
 	pa(a, b);
@@ -21,19 +29,11 @@ static void	is_min(t_list **a, t_list **b, t_chucks *new_chucks)
 	new_chucks->min.loc = BOTTOM_A;
 }
 
-static void	is_mid(t_list **b, t_chucks *new_chucks)
+static void	handle_mid(t_list **b, t_chucks *new_chucks)
 {
 	rrb(b);
 	new_chucks->mid.size++;
 	new_chucks->mid.loc = TOP_B;
-}
-
-static void	is_big(t_list **a, t_list **b, t_chucks *new_chucks)
-{
-	rrb(b);
-	pa(a, b);
-	new_chucks->big.size++;
-	new_chucks->big.loc = TOP_A;
 }
 
 void	handle_bottom_b(t_list **a, t_list **b, t_chucks *new_chucks, int size)
@@ -48,11 +48,11 @@ void	handle_bottom_b(t_list **a, t_list **b, t_chucks *new_chucks, int size)
 	{
 		temp = ft_lstlast(*b);
 		if (((t_data *)temp->content)->index > (pivot * 2) + max_min[1])
-			is_big(a, b, new_chucks);
+			handle_big(a, b, new_chucks);
 		else if (((t_data *)temp->content)->index < pivot + max_min[1])
-			is_min(a, b, new_chucks);
+			handle_min(a, b, new_chucks);
 		else
-			is_mid(b, new_chucks);
+			handle_mid(b, new_chucks);
 	}
 	free(max_min);
 }

@@ -6,7 +6,7 @@
 /*   By: jianwong <jianwong@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:27:11 by jianwong          #+#    #+#             */
-/*   Updated: 2024/12/09 23:27:05 by jianwong         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:24:33 by jianwong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,65 +42,48 @@ typedef struct s_data
 	int	index;
 }			t_data;
 
-// push_swap_utils.c
-void			del(void *data);
-int				is_sorted(t_list *a, int reverse);
-t_list			*init_stack_a(int argc, char **argv, t_list *a);
+// push_swap.c
+void		del(void *data);
 
 // error_checking.c
-int				check_errors(int argc, char **argv);
+int			check_errors(int argc, char **argv);
 
 // presort_enumeration
-void			presort_enumeration(t_list *a);
+void		presort_enumeration(t_list *a);
 
 // sort_chucks
-void			sort_chucks(t_list **a, t_list **b);
-void			init_chucks(t_chucks *new_chucks);
+void		sort_chucks(t_list **a, t_list **b);
+void		init_chucks(t_chucks *new_chucks);
 
 // split_chucks
-t_chucks		*split_chuck(t_list **a, t_list **b, t_chuck chuck);
+t_chucks	*split_chuck(t_list **a, t_list **b, t_chuck chuck);
+void		handle_bottom_a(t_list **a, t_list **b, \
+		t_chucks *new_chucks, int size);
+void		handle_bottom_b(t_list **a, t_list **b, \
+		t_chucks *new_chucks, int size);
+void		handle_top_b(t_list **a, t_list **b, \
+		t_chucks *new_chucks, int size);
 
 // setting_pivot
-int				*setting_pivot(t_list **a, t_list **b, t_loc loc, int size);
+int			*setting_pivot(t_list **a, t_list **b, t_loc loc, int size);
 
 // simple_sort
-void			simple_sort(t_list **a, t_list **b, t_chuck chuck);
+void		simple_sort(t_list **a, t_list **b, t_chuck chuck);
 
 // simple_sort_logic
-void			regular_sort_three(t_list **a, int *condition);
+void		regular_sort_three(t_list **a, int *condition);
 
 // operations
-void			sa(t_list **a);
-void			sb(t_list **b);
-void			ss(t_list **a, t_list **b);
-void			pa(t_list **a, t_list **b);
-void			pb(t_list **a, t_list **b);
-void			ra(t_list **a);
-void			rb(t_list **b);
-void			rr(t_list **a, t_list **b);
-void			rra(t_list **a);
-void			rrb(t_list **b);
-void			rrr(t_list **a, t_list **b);
-
-// bonus operations
-void			b_sa(t_list **a);
-void			b_sb(t_list **b);
-void			b_ss(t_list **a, t_list **b);
-void			b_pa(t_list **a, t_list **b);
-void			b_pb(t_list **a, t_list **b);
-void			b_ra(t_list **a);
-void			b_rb(t_list **b);
-void			b_rr(t_list **a, t_list **b);
-void			b_rra(t_list **a);
-void			b_rrb(t_list **b);
-void			b_rrr(t_list **a, t_list **b);
-
-// handlers
-void			handle_bottom_a(t_list **a, t_list **b, \
-		t_chucks *new_chucks, int size);
-void			handle_top_b(t_list **a, t_list **b, \
-		t_chucks *new_chucks, int size);
-void			handle_bottom_b(t_list **a, t_list **b, \
-		t_chucks *new_chucks, int size);
+void		sa(t_list **a);
+void		sb(t_list **b);
+void		ss(t_list **a, t_list **b);
+void		pa(t_list **a, t_list **b);
+void		pb(t_list **a, t_list **b);
+void		ra(t_list **a);
+void		rb(t_list **b);
+void		rr(t_list **a, t_list **b);
+void		rra(t_list **a);
+void		rrb(t_list **b);
+void		rrr(t_list **a, t_list **b);
 
 #endif // !PUSH_SWAP_H
